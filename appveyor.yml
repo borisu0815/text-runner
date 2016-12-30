@@ -2,7 +2,7 @@ environment:
   nodejs_version: "7"
 
 cache:
-  - node_modules
+ - "%LOCALAPPDATA%\\Yarn"
 
 init:
   - git config --global core.autocrlf true
@@ -10,9 +10,8 @@ init:
 install:
   - ps: Install-Product node $env:nodejs_version
   - node --version
-  - npm --version
-  - npm install --loglevel error --depth 0
-  - set PATH=%APPDATA%\npm;%PATH%
+  - yarn --version
+  - yarn install
 
 test_script:
   - node_modules\o-tools-livescript\bin\build.cmd
